@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,7 +21,7 @@ public class MessageController {
     private ApplicationContext context;
 
     @PutMapping("/session-message")
-    public String updateSessionScopeMessageText(@RequestBody String text) {
+    public String updateSessionScopeMessageText(@RequestParam String text) {
         Message sessionScopeMessage = (Message) context.getBean(SESSION_SCOPE_MESSAGE_BEAN);
         sessionScopeMessage.setMessageText(text);
         return "Session message text updated to: " + sessionScopeMessage.getMessageText();
