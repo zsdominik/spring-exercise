@@ -15,7 +15,7 @@ public class MessageController {
 
     public static final String SESSION_SCOPE_MESSAGE_BEAN = "sessionScopeMessage";
     public static final String REQUEST_SCOPE_MESSAGE_BEAN = "requestScopeMessage";
-    
+
     @Autowired
     private ApplicationContext context;
 
