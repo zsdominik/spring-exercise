@@ -1,6 +1,8 @@
 package com.dzsiros.springexercise;
 
 import com.dzsiros.springexercise.model.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,6 +13,7 @@ public class SpringExerciseApplication {
 
 	private static final String SINGLETON_MESSAGE_BEAN = "singletonMessage";
 	private static final String PROTOTYPE_MESSAGE_BEAN = "prototypeScopeMessage";
+	private static final Logger log = LoggerFactory.getLogger(SpringExerciseApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringExerciseApplication.class, args);
@@ -21,14 +24,14 @@ public class SpringExerciseApplication {
 		Environment environment = context.getEnvironment();
 		// print active profiles
 		for (String profileName : environment.getActiveProfiles()) {
-			System.out.println("Currently active profile - " + profileName);
+			log.info("Currently active profile - " + profileName);
 		}
 
 		String customProperty = environment.getProperty("foo.custom.property");
 		String otherCustomProperty = environment.getProperty("foo.custom.other.property");
 
-		System.out.println(customProperty);
-		System.out.println(otherCustomProperty);
+		log.info(customProperty);
+		log.info(otherCustomProperty);
 
 		demonstrateBeanScopes(context);
 	}
@@ -37,23 +40,23 @@ public class SpringExerciseApplication {
 		Message singletonMessage = (Message) context.getBean(SINGLETON_MESSAGE_BEAN);
 		Message prototypeMessage = (Message) context.getBean(PROTOTYPE_MESSAGE_BEAN);
 
-		System.out.println("------");
+		log.info("------");
 
-		System.out.println("Set singletonMessage's text");
+		log.info("Set singletonMessage's text");
 		singletonMessage.setMessageText("singleton message test");
 
-		System.out.println("Get the object again from the context and print its text");
+		log.info("Get the object again from the context and print its text");
 		Message newSingletonMessage = (Message) context.getBean(SINGLETON_MESSAGE_BEAN);
-		System.out.println(newSingletonMessage.getMessageText());
+		log.info(newSingletonMessage.getMessageText());
 
-		System.out.println("------");
+		log.info("------");
 
-		System.out.println("Set prototypeMessage's text");
+		log.info("Set prototypeMessage's text");
 		prototypeMessage.setMessageText("singleton message test");
 
-		System.out.println("Get the object again from the context and print its text");
+		log.info("Get the object again from the context and print its text");
 		Message newPrototypeMessage = (Message) context.getBean(PROTOTYPE_MESSAGE_BEAN);
-		System.out.println(newPrototypeMessage.getMessageText());
+		log.info(newPrototypeMessage.getMessageText());
 	}
 
 }
