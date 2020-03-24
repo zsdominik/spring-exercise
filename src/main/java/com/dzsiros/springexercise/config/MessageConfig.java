@@ -1,6 +1,6 @@
 package com.dzsiros.springexercise.config;
 
-import com.dzsiros.springexercise.model.Message;
+import com.dzsiros.springexercise.model.MessageModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -12,24 +12,24 @@ public class MessageConfig {
 
     @Bean
     @RequestScope
-    public Message requestScopeMessage() {
-        return new Message();
+    public MessageModel requestScopeMessage() {
+        return new MessageModel();
     }
 
     @Bean
     @SessionScope
-    public Message sessionScopeMessage() {
-        return new Message();
+    public MessageModel sessionScopeMessage() {
+        return new MessageModel();
     }
 
     @Bean
     @Scope("prototype")
-    public Message prototypeScopeMessage() {
-        return new Message();
+    public MessageModel prototypeScopeMessage() {
+        return new MessageModel();
     }
 
     @Bean
-    public Message singletonMessage() {
-        return new Message();
+    public MessageModel singletonMessage() {
+        return new MessageModel();
     }
 }

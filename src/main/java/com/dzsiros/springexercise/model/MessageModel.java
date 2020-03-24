@@ -1,6 +1,6 @@
 package com.dzsiros.springexercise.model;
 
-public class Message {
+public class MessageModel {
     private String messageText;
 
     public String getMessageText() {

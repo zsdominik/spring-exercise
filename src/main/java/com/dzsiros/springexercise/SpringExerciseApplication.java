@@ -1,6 +1,6 @@
 package com.dzsiros.springexercise;
 
-import com.dzsiros.springexercise.model.Message;
+import com.dzsiros.springexercise.model.MessageModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -37,26 +37,26 @@ public class SpringExerciseApplication {
 	}
 
 	private static void demonstrateBeanScopes(AnnotationConfigApplicationContext context) {
-		Message singletonMessage = (Message) context.getBean(SINGLETON_MESSAGE_BEAN);
-		Message prototypeMessage = (Message) context.getBean(PROTOTYPE_MESSAGE_BEAN);
+		MessageModel singletonMessageModel = (MessageModel) context.getBean(SINGLETON_MESSAGE_BEAN);
+		MessageModel prototypeMessageModel = (MessageModel) context.getBean(PROTOTYPE_MESSAGE_BEAN);
 
 		log.info("------");
 
 		log.info("Set singletonMessage's text");
-		singletonMessage.setMessageText("singleton message test");
+		singletonMessageModel.setMessageText("singleton message test");
 
 		log.info("Get the object again from the context and print its text");
-		Message newSingletonMessage = (Message) context.getBean(SINGLETON_MESSAGE_BEAN);
-		log.info(newSingletonMessage.getMessageText());
+		MessageModel newSingletonMessageModel = (MessageModel) context.getBean(SINGLETON_MESSAGE_BEAN);
+		log.info(newSingletonMessageModel.getMessageText());
 
 		log.info("------");
 
 		log.info("Set prototypeMessage's text");
-		prototypeMessage.setMessageText("singleton message test");
+		prototypeMessageModel.setMessageText("singleton message test");
 
 		log.info("Get the object again from the context and print its text");
-		Message newPrototypeMessage = (Message) context.getBean(PROTOTYPE_MESSAGE_BEAN);
-		log.info(newPrototypeMessage.getMessageText());
+		MessageModel newPrototypeMessageModel = (MessageModel) context.getBean(PROTOTYPE_MESSAGE_BEAN);
+		log.info(newPrototypeMessageModel.getMessageText());
 	}
 
 }
