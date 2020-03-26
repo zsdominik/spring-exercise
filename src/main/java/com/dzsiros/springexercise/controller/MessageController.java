@@ -71,6 +71,7 @@ public class MessageController {
 
     @GetMapping("/repository/text")
     public List<Message> findByMessageTextLike(@RequestParam String text) {
+
         return messageRepository.findByMessageTextContains(text);
     }
 

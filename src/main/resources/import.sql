@@ -1,3 +1,5 @@
+INSERT INTO Users (id, username) VALUES (100, 'test user');
+
 INSERT INTO Message (id, message_text) VALUES (100, 'This is a message text from data.sql');
 INSERT INTO Message (id, message_text) VALUES (101, 'This is another message text from data.sql');
 INSERT INTO Message (id, message_text) VALUES (102, 'This is the third message text from data.sql');
@@ -28,3 +30,4 @@ INSERT INTO Message (id, message_text) VALUES (126, 'This is a message text from
 INSERT INTO Message (id, message_text) VALUES (127, 'This is a message text from data.sql');
 INSERT INTO Message (id, message_text) VALUES (128, 'This message is exactly 43 character long!!');
 
+INSERT INTO USERS_MESSAGES (user_id, messages_id) VALUES (100, 100);
