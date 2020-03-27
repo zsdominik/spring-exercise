@@ -30,14 +30,13 @@ public class SessionMessageFilter implements Filter {
         log.info("Remote address: " + request.getRemoteAddr());
         log.info("Remote port: " + request.getRemotePort());
 
-        String message = request.getParameter(TEXT_PARAM_NAME).trim();
-
-        if (HttpMethod.PUT.name().equals(request.getMethod()) && message.isEmpty()) {
-            log.error(ERROR_MESSAGE);
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, ERROR_MESSAGE);
-        } else {
-            filterChain.doFilter(servletRequest, servletResponse);
+        if (HttpMethod.PUT.name().equals(request.getMethod())) {
+            String message = request.getParameter(TEXT_PARAM_NAME).trim();
+            if (message.isEmpty()) {
+                log.error(ERROR_MESSAGE);
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, ERROR_MESSAGE);
+            }
         }
-
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }
