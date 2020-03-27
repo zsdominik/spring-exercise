@@ -56,20 +56,18 @@ public class MessageController {
 
     @PutMapping("/session-message")
     public String updateSessionScopeMessageText(@RequestParam String text) {
-        MessageModel sessionScopeMessageModel = sessionScopeMessage;
-        sessionScopeMessageModel.setMessageText(text);
+        sessionScopeMessage.setMessageText(text);
         String updatedText = ((MessageModel) applicationContext.getBean(SESSION_SCOPE_MESSAGE_BEAN_QUALIFIER)).getMessageText(); // request new instance
         log.info("Session scope bean text was set to: " + updatedText);
-        return "Session message text updated to: " + sessionScopeMessageModel.getMessageText();
+        return "Session message text updated to: " + sessionScopeMessage.getMessageText();
     }
 
     @PutMapping("/request-message")
     public String updateRequestScopeMessageText(@RequestParam String text) {
-        MessageModel requestScopeMessageModel = requestScopeMessage;
-        requestScopeMessageModel.setMessageText(text);
+        requestScopeMessage.setMessageText(text);
         String updatedText = ((MessageModel) applicationContext.getBean(REQUEST_SCOPE_MESSAGE_BEAN_QUALIFIER)).getMessageText(); // request new instance
         log.info("Session scope bean text was set to: " + updatedText);
-        return "Request message text updated to: " + requestScopeMessageModel.getMessageText();
+        return "Request message text updated to: " + requestScopeMessage.getMessageText();
     }
 
     @GetMapping("/session-message")
